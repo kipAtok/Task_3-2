@@ -2,7 +2,9 @@
 
 abstract class BaseArr
 {
-    public abstract double GetAvg { get; }
+    public abstract double Avg { get; }
 
     public abstract void PrintArr();
+
+    public abstract void FillArr(bool userFill = false);
 }

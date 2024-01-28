@@ -4,9 +4,9 @@ sealed class OneDimention: BaseArr
 {
     private int[] _myArr;
 
-    public OneDimention(int length, bool userFill = false)
+    public OneDimention(bool userFill = false)
     {
-        FillArr(length, userFill);
+        FillArr(userFill);
     }
 
     public int this[int index]
@@ -15,7 +15,7 @@ sealed class OneDimention: BaseArr
         set { _myArr[index] = value; }
     }
 
-    public override double GetAvg
+    public override double Avg
     {
         get
         {
@@ -24,7 +24,7 @@ sealed class OneDimention: BaseArr
             {
                 sum += num;
             }
-            return sum / _myArr.Length;
+            return sum / (double) _myArr.Length;
         }
     }
 
@@ -38,11 +38,13 @@ sealed class OneDimention: BaseArr
         Console.WriteLine();
     }
 
-    public void FillArr(int length, bool userFill = false)
+    public override void FillArr(bool userFill = false)
     {
-        _myArr = new int[length];
         if (userFill)
         {
+            Console.Write("Enter the length of the array: ");
+            int length = int.Parse(Console.ReadLine());
+            _myArr = new int[length];
             for (int i = 0; i < length; i++)
             {
                 Console.Write($"Enter a value of {i + 1} element: ");
@@ -52,6 +54,8 @@ sealed class OneDimention: BaseArr
         else
         {
             Random rnd = new Random();
+            int length = rnd.Next(3, 10);
+            _myArr = new int[length];
             for (int i = 0; i < length; i++)
             {
                 _myArr[i] = rnd.Next(1, 10);

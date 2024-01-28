@@ -2,37 +2,37 @@
 
 class Program
 {
-    public void Main(string[] args)
+    public static void Main(string[] args)
     {
-        var odTest = new OneDimention(5, false);
-        
+        var odTest = new OneDimention(false);
+
         odTest.PrintArr();
-        odTest[3] = 69;
+        odTest[2] = 69;
         odTest.PrintArr();
-        Console.WriteLine($"Avg: {odTest.GetAvg}");
-        odTest.FillArr(4, true);
+        Console.WriteLine($"Avg: {odTest.Avg}");
+        odTest.FillArr(true);
         odTest.PrintArr();
 
         Console.WriteLine("---------------");
 
-        var tdTest = new TwoDimention(5, 3, false);
+        var tdTest = new TwoDimention(false);
 
         tdTest.PrintArr();
-        tdTest[3, 0] = 69;
+        tdTest[2, 0] = 69;
         tdTest.PrintArr();
-        Console.WriteLine($"Avg: {tdTest.GetAvg}");
-        tdTest.FillArr(4, 2, true);
+        Console.WriteLine($"Avg: {tdTest.Avg}");
+        tdTest.FillArr(true);
         tdTest.PrintArr();
 
         Console.WriteLine("---------------");
 
-        var ldTest = new LadderArr(5, false);
+        var ldTest = new LadderArr(false);
 
         ldTest.PrintArr();
-        ldTest[3, 0] = 69;
+        ldTest[2, 0] = 69;
         ldTest.PrintArr();
-        Console.WriteLine($"Avg: {ldTest.GetAvg}");
-        ldTest.FillArr(4, true);
+        Console.WriteLine($"Avg: {ldTest.Avg}");
+        ldTest.FillArr(true);
         ldTest.PrintArr();
     }
 }

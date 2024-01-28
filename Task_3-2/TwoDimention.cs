@@ -4,9 +4,9 @@ sealed class TwoDimention: BaseArr
 {
     private int[,] _myArr;
 
-    public TwoDimention(int depth, int length, bool userFill = false)
+    public TwoDimention(bool userFill = false)
     {
-        FillArr(depth, length, userFill);
+        FillArr(userFill);
     }
 
     public int this[int index1, int index2]
@@ -21,7 +21,7 @@ sealed class TwoDimention: BaseArr
         }
     }
 
-    public override double GetAvg
+    public override double Avg
     {
         get
         {
@@ -33,7 +33,7 @@ sealed class TwoDimention: BaseArr
                     sum += _myArr[i, j];
                 }
             }
-            return sum / _myArr.Length;
+            return sum / (double) _myArr.Length;
         }
     }
 
@@ -50,11 +50,15 @@ sealed class TwoDimention: BaseArr
         }
     }
 
-    public void FillArr(int depth, int length, bool userFill = false)
+    public override void FillArr(bool userFill = false)
     {
-        _myArr = new int[depth, length];
         if (userFill)
         {
+            Console.Write("Enter the depth of the array: ");
+            int depth = int.Parse(Console.ReadLine());
+            Console.Write("Enter the length of every nested array: ");
+            int length = int.Parse(Console.ReadLine());
+            _myArr = new int[depth, length];
             for (int i = 0; i < depth; i++)
             {
                 for (int j = 0; j < length; j++)
@@ -67,6 +71,9 @@ sealed class TwoDimention: BaseArr
         else
         {
             Random rnd = new Random();
+            int depth = rnd.Next(3, 10);
+            int length = rnd.Next(3, 10);
+            _myArr = new int[depth, length];
             for (int i = 0; i < depth; i++)
             {
                 for (int j = 0; j < length; j++)

@@ -4,9 +4,9 @@ sealed class LadderArr: BaseArr
 {
     private int[][] _myArr;
 
-    public LadderArr(int depth, bool userFill = false)
+    public LadderArr(bool userFill = false)
     {
-        FillArr(depth, userFill);
+        FillArr(userFill);
     }
 
     public int this[int index1, int index2]
@@ -21,7 +21,7 @@ sealed class LadderArr: BaseArr
         }
     }
 
-    public override double GetAvg
+    public override double Avg
     {
         get
         {
@@ -33,7 +33,7 @@ sealed class LadderArr: BaseArr
                     sum += num;
                 }
             }
-            return sum / _myArr.Length;
+            return sum / (double) _myArr.Length;
         }
     }
 
@@ -50,11 +50,13 @@ sealed class LadderArr: BaseArr
         }
     }
 
-    public void FillArr(int depth, bool userFill = false)
+    public override void FillArr(bool userFill = false)
     {
-        _myArr = new int[depth][];
         if (userFill)
         {
+            Console.Write("Enter the depth of the array: ");
+            int depth = int.Parse(Console.ReadLine());
+            _myArr = new int[depth][];
             for (int i = 0; i < depth; i++)
             {
                 Console.Write($"Enter the length of {i + 1} line: ");
@@ -69,7 +71,9 @@ sealed class LadderArr: BaseArr
         }
         else
         {
-            Random rnd = new Random();
+            Random rnd = new Random();  
+            int depth = rnd.Next(3, 10);
+            _myArr = new int[depth][];
             for (int i = 0; i < depth; i++)
             {
                 _myArr[i] = new int[rnd.Next(1, 10)];
