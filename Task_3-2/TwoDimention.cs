@@ -57,7 +57,7 @@ sealed class TwoDimention: ArrBase
     {
         get
         {
-            int sum = 0;
+            double sum = 0;
             for (int i = 0; i < _myArr.GetLength(0); i++)
             {
                 for (int j = 0; j < _myArr.GetLength(1); j++)
@@ -65,7 +65,7 @@ sealed class TwoDimention: ArrBase
                     sum += _myArr[i, j];
                 }
             }
-            return sum / (double) _myArr.Length;
+            return sum / _myArr.Length;
         }
     }
 

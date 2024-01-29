@@ -57,7 +57,7 @@ sealed class LadderArr: ArrBase
     {
         get
         {
-            int sum = 0;
+            double sum = 0;
             foreach (int[] line in _myArr)
             {
                 foreach (int num in line)
@@ -65,7 +65,7 @@ sealed class LadderArr: ArrBase
                     sum += num;
                 }
             }
-            return sum / (double) _myArr.Length;
+            return sum / _myArr.Length;
         }
     }
 

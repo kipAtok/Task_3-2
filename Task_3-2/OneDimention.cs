@@ -42,12 +42,12 @@ sealed class OneDimention: ArrBase
     {
         get
         {
-            int sum = 0;
+            double sum = 0;
             foreach (int num in _myArr)
             {
                 sum += num;
             }
-            return sum / (double) _myArr.Length;
+            return sum / _myArr.Length;
         }
     }
 
