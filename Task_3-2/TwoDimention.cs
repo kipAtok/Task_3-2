@@ -1,8 +1,40 @@
 ﻿using System;
 
-sealed class TwoDimention: BaseArr
+sealed class TwoDimention: ArrBase
 {
     private int[,] _myArr;
+
+    protected override void ManualFill()
+    {
+        Console.Write("Enter the depth of the array: ");
+        int depth = int.Parse(Console.ReadLine());
+        Console.Write("Enter the length of every nested array: ");
+        int length = int.Parse(Console.ReadLine());
+        _myArr = new int[depth, length];
+        for (int i = 0; i < depth; i++)
+        {
+            for (int j = 0; j < length; j++)
+            {
+                Console.Write($"Enter a value of {j + 1} element of {i + 1} line: ");
+                _myArr[i, j] = int.Parse(Console.ReadLine());
+            }
+        }
+    }
+
+    protected override void AutoFill()
+    {
+        Random rnd = new Random();
+        int depth = rnd.Next(3, 10);
+        int length = rnd.Next(3, 10);
+        _myArr = new int[depth, length];
+        for (int i = 0; i < depth; i++)
+        {
+            for (int j = 0; j < length; j++)
+            {
+                _myArr[i, j] = rnd.Next(1, 10);
+            }
+        }
+    } 
 
     public TwoDimention(bool userFill = false)
     {
@@ -54,33 +86,11 @@ sealed class TwoDimention: BaseArr
     {
         if (userFill)
         {
-            Console.Write("Enter the depth of the array: ");
-            int depth = int.Parse(Console.ReadLine());
-            Console.Write("Enter the length of every nested array: ");
-            int length = int.Parse(Console.ReadLine());
-            _myArr = new int[depth, length];
-            for (int i = 0; i < depth; i++)
-            {
-                for (int j = 0; j < length; j++)
-                {
-                    Console.Write($"Enter a value of {j + 1} element of {i + 1} line: ");
-                    _myArr[i, j] = int.Parse(Console.ReadLine());
-                }
-            }
+            AutoFill();
         }
         else
         {
-            Random rnd = new Random();
-            int depth = rnd.Next(3, 10);
-            int length = rnd.Next(3, 10);
-            _myArr = new int[depth, length];
-            for (int i = 0; i < depth; i++)
-            {
-                for (int j = 0; j < length; j++)
-                {
-                    _myArr[i, j] = rnd.Next(1, 10);
-                }
-            }
+            AutoFill();
         }
     }
 }

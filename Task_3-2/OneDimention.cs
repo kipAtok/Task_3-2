@@ -1,8 +1,31 @@
 ﻿using System;
 
-sealed class OneDimention: BaseArr
+sealed class OneDimention: ArrBase
 {
     private int[] _myArr;
+
+    protected override void ManualFill()
+    {
+        Random rnd = new Random();
+        int length = rnd.Next(3, 10);
+        _myArr = new int[length];
+        for (int i = 0; i < length; i++)
+        {
+            _myArr[i] = rnd.Next(1, 10);
+        }
+    }
+
+    protected override void AutoFill()
+    {
+        Console.Write("Enter the length of the array: ");
+        int length = int.Parse(Console.ReadLine());
+        _myArr = new int[length];
+        for (int i = 0; i < length; i++)
+        {
+            Console.Write($"Enter a value of {i + 1} element: ");
+            _myArr[i] = int.Parse(Console.ReadLine());
+        }
+    }
 
     public OneDimention(bool userFill = false)
     {
@@ -42,24 +65,11 @@ sealed class OneDimention: BaseArr
     {
         if (userFill)
         {
-            Console.Write("Enter the length of the array: ");
-            int length = int.Parse(Console.ReadLine());
-            _myArr = new int[length];
-            for (int i = 0; i < length; i++)
-            {
-                Console.Write($"Enter a value of {i + 1} element: ");
-                _myArr[i] = int.Parse(Console.ReadLine());
-            }
+            AutoFill();
         }
         else
         {
-            Random rnd = new Random();
-            int length = rnd.Next(3, 10);
-            _myArr = new int[length];
-            for (int i = 0; i < length; i++)
-            {
-                _myArr[i] = rnd.Next(1, 10);
-            }
+            ManualFill();
         }
     }
 }

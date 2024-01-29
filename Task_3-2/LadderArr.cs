@@ -1,8 +1,40 @@
 ﻿using System;
 
-sealed class LadderArr: BaseArr
+sealed class LadderArr: ArrBase
 {
     private int[][] _myArr;
+
+    protected override void ManualFill()
+    {
+        Console.Write("Enter the depth of the array: ");
+        int depth = int.Parse(Console.ReadLine());
+        _myArr = new int[depth][];
+        for (int i = 0; i < depth; i++)
+        {
+            Console.Write($"Enter the length of {i + 1} line: ");
+            _myArr[i] = new int[int.Parse(Console.ReadLine())];
+            for (int j = 0; j < _myArr[i].Length; j++)
+            {
+                Console.Write($"Enter a value of {j + 1} element of {i + 1} line: ");
+                _myArr[i][j] = int.Parse(Console.ReadLine());
+            }
+        }
+    }
+
+    protected override void AutoFill()
+    {
+        Random rnd = new Random();  
+        int depth = rnd.Next(3, 10);
+        _myArr = new int[depth][];
+        for (int i = 0; i < depth; i++)
+        {
+            _myArr[i] = new int[rnd.Next(1, 10)];
+            for (int j = 0; j < _myArr[i].Length; j++)
+            {
+                _myArr[i][j] = rnd.Next(1, 10);
+            }
+        }
+    }
 
     public LadderArr(bool userFill = false)
     {
@@ -54,34 +86,12 @@ sealed class LadderArr: BaseArr
     {
         if (userFill)
         {
-            Console.Write("Enter the depth of the array: ");
-            int depth = int.Parse(Console.ReadLine());
-            _myArr = new int[depth][];
-            for (int i = 0; i < depth; i++)
-            {
-                Console.Write($"Enter the length of {i + 1} line: ");
-                _myArr[i] = new int[int.Parse(Console.ReadLine())];
-                for (int j = 0; j < _myArr[i].Length; j++)
-                {
-                    Console.Write($"Enter a value of {j + 1} element of {i + 1} line: ");
-                    _myArr[i][j] = int.Parse(Console.ReadLine());
-                }
-            }
+            ManualFill();
 
         }
         else
         {
-            Random rnd = new Random();  
-            int depth = rnd.Next(3, 10);
-            _myArr = new int[depth][];
-            for (int i = 0; i < depth; i++)
-            {
-                _myArr[i] = new int[rnd.Next(1, 10)];
-                for (int j = 0; j < _myArr[i].Length; j++)
-                {
-                    _myArr[i][j] = rnd.Next(1, 10);
-                }
-            }
+            AutoFill();
         }
     }
 }
