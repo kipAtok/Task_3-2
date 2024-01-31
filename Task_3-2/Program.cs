@@ -10,12 +10,12 @@ class Program
         testBase[1] = new TwoDimention(false);
         testBase[2] = new LadderArr(false);
 
-        foreach (var array in testBase)
+        for (int i = 0; i < 3; i++)
         {
-            odTest.PrintArr();
-            Console.WriteLine($"Avg: {odTest.Avg}");
-            odTest.FillArr(true);
-            odTest.PrintArr();
+            testBase[i].PrintArr();
+            Console.WriteLine($"Avg: {testBase[i].Avg}");
+            testBase[i].FillArr(true);
+            testBase[i].PrintArr();
         }
     }
 }

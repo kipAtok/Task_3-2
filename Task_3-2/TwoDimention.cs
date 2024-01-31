@@ -74,7 +74,7 @@ sealed class TwoDimention: ArrBase
     {
         if (userFill)
         {
-            AutoFill();
+            ManualFill();
         }
         else
         {
