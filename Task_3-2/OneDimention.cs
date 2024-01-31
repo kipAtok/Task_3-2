@@ -59,11 +59,11 @@ sealed class OneDimention: ArrBase
     {
         if (userFill)
         {
-            AutoFill();
+            ManualFill();
         }
         else
         {
-            ManualFill();
+            AutoFill();
         }
     }
 }
