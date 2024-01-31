@@ -32,12 +32,6 @@ sealed class OneDimention: ArrBase
         FillArr(userFill);
     }
 
-    public int this[int index]
-    {
-        get {  return _myArr[index]; }
-        set { _myArr[index] = value; }
-    }
-
     public override double Avg
     {
         get

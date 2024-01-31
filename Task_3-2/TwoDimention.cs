@@ -41,12 +41,6 @@ sealed class TwoDimention: ArrBase
         FillArr(userFill);
     }
 
-    public int this[int index1, int index2]
-    {
-        get { return _myArr[index1, index2]; }
-        set { _myArr[index1, index2] = value; }
-    }
-
     public override double Avg
     {
         get
