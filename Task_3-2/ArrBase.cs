@@ -6,7 +6,17 @@ abstract class ArrBase
 
     public abstract void PrintArr();
 
-    public abstract void FillArr(bool userFill = false);
+    public virtual void FillArr(bool userFill)
+    {
+        if (userFill)
+        {
+            ManualFill();
+        }
+        else
+        {
+            AutoFill();
+        }
+    }
 
     protected abstract void ManualFill();
 

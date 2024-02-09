@@ -54,16 +54,4 @@ sealed class OneDimention: ArrBase
         }
         Console.WriteLine();
     }
-
-    public override void FillArr(bool userFill = false)
-    {
-        if (userFill)
-        {
-            ManualFill();
-        }
-        else
-        {
-            AutoFill();
-        }
-    }
 }
